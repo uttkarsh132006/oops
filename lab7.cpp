@@ -126,62 +126,210 @@
 // }
 
 
+// #include <iostream>
+// using namespace std;
+
+
+// class BankAccount {
+// protected:
+//     int accountNumber;
+//     double balance;
+
+// public:
+    
+//     BankAccount(int accNo, double bal) {
+//         accountNumber = accNo;
+//         balance = bal;
+
+//         cout << "BankAccount constructor called" << endl;
+//     }
+
+//     void displayAccount() {
+//         cout << "Account Number : " << accountNumber << endl;
+//         cout << "Balance        : " << balance << endl;
+//     }
+// };
+
+
+// class SavingsAccount : public BankAccount {
+// private:
+//     double interestRate;
+
+// public:
+//     // Constructor of SavingsAccount
+//     SavingsAccount(int accNo, double bal, double rate)
+//         : BankAccount(accNo, bal) {
+        
+//         interestRate = rate;
+
+//         cout << "SavingsAccount constructor called" << endl;
+//     }
+
+//     double calculateInterest() {
+//         return balance * interestRate / 100;
+//     }
+
+//     void display() {
+//         displayAccount();
+//         cout << "Interest Rate  : " << interestRate << "%" << endl;
+//         cout << "Interest       : " << calculateInterest() << endl;
+//     }
+// };
+
+// int main() {
+
+//     SavingsAccount account(101, 50000, 6.5);
+
+//     cout << "\n--- Account Details ---" << endl;
+//     account.display();
+
+//     return 0;
+// }
+
+
 #include <iostream>
+#include <string>
 using namespace std;
 
 // Base class
-class BankAccount {
+class Person {
 protected:
-    int accountNumber;
-    double balance;
+    string name;
 
 public:
-    // Constructor of BankAccount
-    BankAccount(int accNo, double bal) {
-        accountNumber = accNo;
-        balance = bal;
-
-        cout << "BankAccount constructor called" << endl;
-    }
-
-    void displayAccount() {
-        cout << "Account Number : " << accountNumber << endl;
-        cout << "Balance        : " << balance << endl;
+    // Constructor
+    Person(string n) {
+        name = n;
+        cout << "Person constructor called" << endl;
     }
 };
 
 // Derived class
-class SavingsAccount : public BankAccount {
-private:
-    double interestRate;
+class Employee : public Person {
+protected:
+    int employeeID;
+    double basicSalary;
 
 public:
-    // Constructor of SavingsAccount
-    SavingsAccount(int accNo, double bal, double rate)
-        : BankAccount(accNo, bal) {
+    // Constructor
+    Employee(string n, int id, double salary)
+        : Person(n) {
         
-        interestRate = rate;
+        employeeID = id;
+        basicSalary = salary;
 
-        cout << "SavingsAccount constructor called" << endl;
+        cout << "Employee constructor called" << endl;
     }
+};
 
-    double calculateInterest() {
-        return balance * interestRate / 100;
+// Derived class
+class Manager : public Employee {
+private:
+    int teamSize;
+    string department;
+
+public:
+    // Constructor
+    Manager(string n, int id, double salary, int team, string dept)
+        : Employee(n, id, salary) {
+        
+        teamSize = team;
+        department = dept;
+
+        cout << "Manager constructor called" << endl;
     }
 
     void display() {
-        displayAccount();
-        cout << "Interest Rate  : " << interestRate << "%" << endl;
-        cout << "Interest       : " << calculateInterest() << endl;
+        cout << "\n--- Manager Record ---" << endl;
+        cout << "Name         : " << name << endl;
+        cout << "Employee ID  : " << employeeID << endl;
+        cout << "Basic Salary : " << basicSalary << endl;
+        cout << "Team Size    : " << teamSize << endl;
+        cout << "Department   : " << department << endl;
     }
 };
 
 int main() {
 
-    SavingsAccount account(101, 50000, 6.5);
+    Manager m("Uttkarsh", 101, 50000, 10, "Computer Science");
 
-    cout << "\n--- Account Details ---" << endl;
-    account.display();
+    m.display();
+
+    return 0;
+}
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Vehicle {
+protected:
+    string brand;
+    string registrationNumber;
+
+public:
+    Vehicle(string b, string reg) {
+        brand = b;
+        registrationNumber = reg;
+    }
+};
+
+// Derived class
+class Car : public Vehicle {
+protected:
+    int seatingCapacity;
+    string model;
+
+public:
+    Car(string b, string reg, int seats, string m)
+        : Vehicle(b, reg) {
+        
+        seatingCapacity = seats;
+        model = m;
+    }
+};
+
+// Derived class
+class ElectricCar : public Car {
+private:
+    double batteryCapacity;
+    double chargingRange;
+
+public:
+    ElectricCar(string b, string reg, int seats, string m,
+                double battery, double range)
+        : Car(b, reg, seats, m) {
+        
+        batteryCapacity = battery;
+        chargingRange = range;
+    }
+
+    void display() {
+        cout << "\n--- Electric Car Details ---" << endl;
+        cout << "Brand               : " << brand << endl;
+        cout << "Registration Number : " << registrationNumber << endl;
+        cout << "Model               : " << model << endl;
+        cout << "Seating Capacity    : " << seatingCapacity << endl;
+        cout << "Battery Capacity    : " << batteryCapacity << " kWh" << endl;
+        cout << "Charging Range      : " << chargingRange << " km" << endl;
+    }
+};
+
+int main() {
+
+    ElectricCar e(
+        "Tesla",
+        "JK01AB1234",
+        5,
+        "Model 3",
+        75,
+        500
+    );
+
+    e.display();
 
     return 0;
 }
