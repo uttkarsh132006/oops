@@ -60,67 +60,128 @@
 // }
 
 
-#include <iostream>
-#include <string>
-using namespace std;
+// #include <iostream>
+// #include <string>
+// using namespace std;
 
  
-class Employee {
+// class Employee {
+// protected:
+//     string name;
+//     int employeeID;
+//     double salary;
+
+// public:
+//     void getEmployeeData() {
+//         cout << "Enter employee name: ";
+//         getline(cin, name);
+
+//         cout << "Enter employee ID: ";
+//         cin >> employeeID;
+
+//         cout << "Enter monthly salary: ";
+//         cin >> salary;
+//     }
+// };
+
+
+// class Manager : public Employee {
+// private:
+//     string department;
+//     int teamSize;
+
+// public:
+//     void getManagerData() {
+//         getEmployeeData();
+
+//         cin.ignore();
+
+//         cout << "Enter department: ";
+//         getline(cin, department);
+
+//         cout << "Enter team size: ";
+//         cin >> teamSize;
+//     }
+
+//     void display() {
+//         double annualSalary = salary * 12;
+
+//         cout << "\n--- Manager Details ---\n";
+//         cout << "Name          : " << name << endl;
+//         cout << "Employee ID   : " << employeeID << endl;
+//         cout << "Monthly Salary: " << salary << endl;
+//         cout << "Annual Salary : " << annualSalary << endl;
+//         cout << "Department    : " << department << endl;
+//         cout << "Team Size     : " << teamSize << endl;
+//     }
+// };
+
+// int main() {
+//     Manager m;
+
+//     m.getManagerData();
+//     m.display();
+
+//     return 0;
+// }
+
+
+#include <iostream>
+using namespace std;
+
+// Base class
+class BankAccount {
 protected:
-    string name;
-    int employeeID;
-    double salary;
+    int accountNumber;
+    double balance;
 
 public:
-    void getEmployeeData() {
-        cout << "Enter employee name: ";
-        getline(cin, name);
+    // Constructor of BankAccount
+    BankAccount(int accNo, double bal) {
+        accountNumber = accNo;
+        balance = bal;
 
-        cout << "Enter employee ID: ";
-        cin >> employeeID;
+        cout << "BankAccount constructor called" << endl;
+    }
 
-        cout << "Enter monthly salary: ";
-        cin >> salary;
+    void displayAccount() {
+        cout << "Account Number : " << accountNumber << endl;
+        cout << "Balance        : " << balance << endl;
     }
 };
 
-
-class Manager : public Employee {
+// Derived class
+class SavingsAccount : public BankAccount {
 private:
-    string department;
-    int teamSize;
+    double interestRate;
 
 public:
-    void getManagerData() {
-        getEmployeeData();
+    // Constructor of SavingsAccount
+    SavingsAccount(int accNo, double bal, double rate)
+        : BankAccount(accNo, bal) {
+        
+        interestRate = rate;
 
-        cin.ignore();
+        cout << "SavingsAccount constructor called" << endl;
+    }
 
-        cout << "Enter department: ";
-        getline(cin, department);
-
-        cout << "Enter team size: ";
-        cin >> teamSize;
+    double calculateInterest() {
+        return balance * interestRate / 100;
     }
 
     void display() {
-        double annualSalary = salary * 12;
-
-        cout << "\n--- Manager Details ---\n";
-        cout << "Name          : " << name << endl;
-        cout << "Employee ID   : " << employeeID << endl;
-        cout << "Monthly Salary: " << salary << endl;
-        cout << "Annual Salary : " << annualSalary << endl;
-        cout << "Department    : " << department << endl;
-        cout << "Team Size     : " << teamSize << endl;
+        displayAccount();
+        cout << "Interest Rate  : " << interestRate << "%" << endl;
+        cout << "Interest       : " << calculateInterest() << endl;
     }
 };
 
 int main() {
-    Manager m;
 
-    m.getManagerData();
-    m.display();
+    SavingsAccount account(101, 50000, 6.5);
+
+    cout << "\n--- Account Details ---" << endl;
+    account.display();
 
     return 0;
 }
