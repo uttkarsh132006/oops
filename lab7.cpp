@@ -1,64 +1,64 @@
-// #include <iostream>
-// #include <string>
-// using namespace std;
- 
-// class Person {
-// protected:
-//     string name;
-//     int age;
+#include <iostream>
+#include <string>
+using namespace std;
 
-// public:
-//     void getPersonData() {
-//         cout << "Enter name: ";
-//         getline(cin, name);
+// Base class
+class Person {
+protected:
+    string name;
+    int age;
 
-//         cout << "Enter age: ";
-//         cin >> age;
-//     }
-// };
+public:
+    void getPersonData() {
+        cout << "Enter name: ";
+        getline(cin, name);
 
- 
-// class Student : public Person {
-// private:
-//     int rollNo;
-//     string department;
-//     int semester;
+        cout << "Enter age: ";
+        cin >> age;
+    }
+};
 
-// public:
-//     void getStudentData() {
-//         getPersonData();
+// Derived class
+class Student : public Person {
+private:
+    int rollNo;
+    string department;
+    int semester;
 
-//         cout << "Enter roll number: ";
-//         cin >> rollNo;
+public:
+    void getStudentData() {
+        getPersonData();
 
-//         cin.ignore(); // clear newline
+        cout << "Enter roll number: ";
+        cin >> rollNo;
 
-//         cout << "Enter department: ";
-//         getline(cin, department);
+        cin.ignore(); // clear newline
 
-//         cout << "Enter semester: ";
-//         cin >> semester;
-//     }
+        cout << "Enter department: ";
+        getline(cin, department);
 
-//     void display() {
-//         cout << "\n--- Student Information ---\n";
-//         cout << "Name       : " << name << endl;
-//         cout << "Age        : " << age << endl;
-//         cout << "Roll Number: " << rollNo << endl;
-//         cout << "Department : " << department << endl;
-//         cout << "Semester   : " << semester << endl;
-//     }
-// };
+        cout << "Enter semester: ";
+        cin >> semester;
+    }
 
-// int main() {
-//     Student s;
+    void display() {
+        cout << "\n--- Student Information ---\n";
+        cout << "Name       : " << name << endl;
+        cout << "Age        : " << age << endl;
+        cout << "Roll Number: " << rollNo << endl;
+        cout << "Department : " << department << endl;
+        cout << "Semester   : " << semester << endl;
+    }
+};
 
-//     s.getStudentData();
-//     s.display();
+int main() {
+    Student s;
 
-//     return 0;
-// }
+    s.getStudentData();
+    s.display();
 
+    return 0;
+}
 
 // #include <iostream>
 // #include <string>
@@ -187,149 +187,149 @@
 // }
 
 
-#include <iostream>
-#include <string>
-using namespace std;
+// #include <iostream>
+// #include <string>
+// using namespace std;
 
-// Base class
-class Person {
-protected:
-    string name;
+// // Base class
+// class Person {
+// protected:
+//     string name;
 
-public:
-    // Constructor
-    Person(string n) {
-        name = n;
-        cout << "Person constructor called" << endl;
-    }
-};
+// public:
+//     // Constructor
+//     Person(string n) {
+//         name = n;
+//         cout << "Person constructor called" << endl;
+//     }
+// };
 
-// Derived class
-class Employee : public Person {
-protected:
-    int employeeID;
-    double basicSalary;
+// // Derived class
+// class Employee : public Person {
+// protected:
+//     int employeeID;
+//     double basicSalary;
 
-public:
-    // Constructor
-    Employee(string n, int id, double salary)
-        : Person(n) {
+// public:
+//     // Constructor
+//     Employee(string n, int id, double salary)
+//         : Person(n) {
         
-        employeeID = id;
-        basicSalary = salary;
+//         employeeID = id;
+//         basicSalary = salary;
 
-        cout << "Employee constructor called" << endl;
-    }
-};
+//         cout << "Employee constructor called" << endl;
+//     }
+// };
 
-// Derived class
-class Manager : public Employee {
-private:
-    int teamSize;
-    string department;
+// // Derived class
+// class Manager : public Employee {
+// private:
+//     int teamSize;
+//     string department;
 
-public:
-    // Constructor
-    Manager(string n, int id, double salary, int team, string dept)
-        : Employee(n, id, salary) {
+// public:
+//     // Constructor
+//     Manager(string n, int id, double salary, int team, string dept)
+//         : Employee(n, id, salary) {
         
-        teamSize = team;
-        department = dept;
+//         teamSize = team;
+//         department = dept;
 
-        cout << "Manager constructor called" << endl;
-    }
+//         cout << "Manager constructor called" << endl;
+//     }
 
-    void display() {
-        cout << "\n--- Manager Record ---" << endl;
-        cout << "Name         : " << name << endl;
-        cout << "Employee ID  : " << employeeID << endl;
-        cout << "Basic Salary : " << basicSalary << endl;
-        cout << "Team Size    : " << teamSize << endl;
-        cout << "Department   : " << department << endl;
-    }
-};
+//     void display() {
+//         cout << "\n--- Manager Record ---" << endl;
+//         cout << "Name         : " << name << endl;
+//         cout << "Employee ID  : " << employeeID << endl;
+//         cout << "Basic Salary : " << basicSalary << endl;
+//         cout << "Team Size    : " << teamSize << endl;
+//         cout << "Department   : " << department << endl;
+//     }
+// };
 
-int main() {
+// int main() {
 
-    Manager m("Uttkarsh", 101, 50000, 10, "Computer Science");
+//     Manager m("Uttkarsh", 101, 50000, 10, "Computer Science");
 
-    m.display();
+//     m.display();
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 
-#include <iostream>
-#include <string>
-using namespace std;
+// #include <iostream>
+// #include <string>
+// using namespace std;
 
-// Base class
-class Vehicle {
-protected:
-    string brand;
-    string registrationNumber;
+// // Base class
+// class Vehicle {
+// protected:
+//     string brand;
+//     string registrationNumber;
 
-public:
-    Vehicle(string b, string reg) {
-        brand = b;
-        registrationNumber = reg;
-    }
-};
+// public:
+//     Vehicle(string b, string reg) {
+//         brand = b;
+//         registrationNumber = reg;
+//     }
+// };
 
-// Derived class
-class Car : public Vehicle {
-protected:
-    int seatingCapacity;
-    string model;
+// // Derived class
+// class Car : public Vehicle {
+// protected:
+//     int seatingCapacity;
+//     string model;
 
-public:
-    Car(string b, string reg, int seats, string m)
-        : Vehicle(b, reg) {
+// public:
+//     Car(string b, string reg, int seats, string m)
+//         : Vehicle(b, reg) {
         
-        seatingCapacity = seats;
-        model = m;
-    }
-};
+//         seatingCapacity = seats;
+//         model = m;
+//     }
+// };
 
-// Derived class
-class ElectricCar : public Car {
-private:
-    double batteryCapacity;
-    double chargingRange;
+// // Derived class
+// class ElectricCar : public Car {
+// private:
+//     double batteryCapacity;
+//     double chargingRange;
 
-public:
-    ElectricCar(string b, string reg, int seats, string m,
-                double battery, double range)
-        : Car(b, reg, seats, m) {
+// public:
+//     ElectricCar(string b, string reg, int seats, string m,
+//                 double battery, double range)
+//         : Car(b, reg, seats, m) {
         
-        batteryCapacity = battery;
-        chargingRange = range;
-    }
+//         batteryCapacity = battery;
+//         chargingRange = range;
+//     }
 
-    void display() {
-        cout << "\n--- Electric Car Details ---" << endl;
-        cout << "Brand               : " << brand << endl;
-        cout << "Registration Number : " << registrationNumber << endl;
-        cout << "Model               : " << model << endl;
-        cout << "Seating Capacity    : " << seatingCapacity << endl;
-        cout << "Battery Capacity    : " << batteryCapacity << " kWh" << endl;
-        cout << "Charging Range      : " << chargingRange << " km" << endl;
-    }
-};
+//     void display() {
+//         cout << "\n--- Electric Car Details ---" << endl;
+//         cout << "Brand               : " << brand << endl;
+//         cout << "Registration Number : " << registrationNumber << endl;
+//         cout << "Model               : " << model << endl;
+//         cout << "Seating Capacity    : " << seatingCapacity << endl;
+//         cout << "Battery Capacity    : " << batteryCapacity << " kWh" << endl;
+//         cout << "Charging Range      : " << chargingRange << " km" << endl;
+//     }
+// };
 
-int main() {
+// int main() {
 
-    ElectricCar e(
-        "Tesla",
-        "JK01AB1234",
-        5,
-        "Model 3",
-        75,
-        500
-    );
+//     ElectricCar e(
+//         "Tesla",
+//         "JK01AB1234",
+//         5,
+//         "Model 3",
+//         75,
+//         500
+//     );
 
-    e.display();
+//     e.display();
 
-    return 0;
-}
+//     return 0;
+// }
