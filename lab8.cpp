@@ -124,86 +124,135 @@
 
 
 //q->8
+// #include <iostream>
+// using namespace std;
+
+// // Common base class
+// class Person {
+// protected:
+//     string name;
+//     int age;
+
+// public:
+//     void setPerson(string n, int a) {
+//         name = n;
+//         age = a;
+//     }
+
+//     void displayPerson() {
+//         cout << "Name: " << name << endl;
+//         cout << "Age: " << age << endl;
+//     }
+// };
+
+// // Student virtually inherits Person
+// class Student : virtual public Person {
+// protected:
+//     string department;
+
+// public:
+//     void setStudent(string d) {
+//         department = d;
+//     }
+
+//     void displayStudent() {
+//         cout << "Department: " << department << endl;
+//     }
+// };
+
+// // Researcher virtually inherits Person
+// class Researcher : virtual public Person {
+// protected:
+//     string researchArea;
+
+// public:
+//     void setResearcher(string r) {
+//         researchArea = r;
+//     }
+
+//     void displayResearcher() {
+//         cout << "Research Area: " << researchArea << endl;
+//     }
+// };
+
+// // PhDStudent inherits from both Student and Researcher
+// class PhDStudent : public Student, public Researcher {
+// private:
+//     string thesisTitle;
+
+// public:
+//     void setThesis(string t) {
+//         thesisTitle = t;
+//     }
+
+//     void display() {
+//         displayPerson();
+//         displayStudent();
+//         displayResearcher();
+//         cout << "Thesis Title: " << thesisTitle << endl;
+//     }
+// };
+
+// int main() {
+
+//     PhDStudent p;
+
+//     p.setPerson("Utkarsh", 21); //beacuse we did virtual here we can set directly person beacuse student snd resercher share the same object
+//     p.setStudent("Computer Science"); //if we d not use vertual we vould have used p.student::name="uttk" & we can define one more name 
+//     // p.resercher::name=" "; 
+//     p.setResearcher("Artificial Intelligence");
+//     p.setThesis("AI Based Healthcare System");
+
+//     p.display();
+
+//     return 0;
+// }
+
+//q->9
+
 #include <iostream>
 using namespace std;
 
-// Common base class
-class Person {
-protected:
-    string name;
-    int age;
-
+// Base class
+class Device {
 public:
-    void setPerson(string n, int a) {
-        name = n;
-        age = a;
-    }
-
-    void displayPerson() {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
+    void powerOn() {
+        cout << "Device is powered on." << endl;
     }
 };
 
-// Student virtually inherits Person
-class Student : virtual public Person {
-protected:
-    string department;
-
+// Computer virtually inherits Device
+class Computer : virtual public Device {
 public:
-    void setStudent(string d) {
-        department = d;
-    }
-
-    void displayStudent() {
-        cout << "Department: " << department << endl;
+    void compute() {
+        cout << "Computer is computing." << endl;
     }
 };
 
-// Researcher virtually inherits Person
-class Researcher : virtual public Person {
-protected:
-    string researchArea;
-
+// Camera virtually inherits Device
+class Camera : virtual public Device {
 public:
-    void setResearcher(string r) {
-        researchArea = r;
-    }
-
-    void displayResearcher() {
-        cout << "Research Area: " << researchArea << endl;
+    void capture() {
+        cout << "Camera is capturing a photo." << endl;
     }
 };
 
-// PhDStudent inherits from both Student and Researcher
-class PhDStudent : public Student, public Researcher {
-private:
-    string thesisTitle;
-
+// Smartphone inherits from both
+class Smartphone : public Computer, public Camera {
 public:
-    void setThesis(string t) {
-        thesisTitle = t;
-    }
-
-    void display() {
-        displayPerson();
-        displayStudent();
-        displayResearcher();
-        cout << "Thesis Title: " << thesisTitle << endl;
+    void usePhone() {
+        cout << "Smartphone is being used." << endl;
     }
 };
 
 int main() {
 
-    PhDStudent p;
+    Smartphone s;
 
-    p.setPerson("Utkarsh", 21); //beacuse we did virtual here we can set directly person beacuse student snd resercher share the same object
-    p.setStudent("Computer Science"); //if we d not use vertual we vould have used p.student::name="uttk" & we can define one more name 
-    // p.resercher::name=" "; 
-    p.setResearcher("Artificial Intelligence");
-    p.setThesis("AI Based Healthcare System");
-
-    p.display();
+    s.powerOn();
+    s.compute();
+    s.capture();
+    s.usePhone();
 
     return 0;
 }
