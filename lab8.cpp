@@ -210,49 +210,128 @@
 
 //q->9
 
+// #include <iostream>
+// using namespace std;
+
+// // Base class
+// class Device {
+// public:
+//     void powerOn() {
+//         cout << "Device is powered on." << endl;
+//     }
+// };
+
+// // Computer virtually inherits Device
+// class Computer : virtual public Device {
+// public:
+//     void compute() {
+//         cout << "Computer is computing." << endl;
+//     }
+// };
+
+// // Camera virtually inherits Device
+// class Camera : virtual public Device {
+// public:
+//     void capture() {
+//         cout << "Camera is capturing a photo." << endl;
+//     }
+// };
+
+// // Smartphone inherits from both
+// class Smartphone : public Computer, public Camera {
+// public:
+//     void usePhone() {
+//         cout << "Smartphone is being used." << endl;
+//     }
+// };
+
+// int main() {
+
+//     Smartphone s;
+
+//     s.powerOn();
+//     s.compute();
+//     s.capture();
+//     s.usePhone();
+
+//     return 0;
+// }
+
+
+//q->10
+
 #include <iostream>
 using namespace std;
 
-// Base class
-class Device {
+// Common base class
+class Person {
+protected:
+    string name;
+
 public:
-    void powerOn() {
-        cout << "Device is powered on." << endl;
+    void setName(string n) {
+        name = n;
+    }
+
+    void displayPerson() {
+        cout << "Name: " << name << endl;
     }
 };
 
-// Computer virtually inherits Device
-class Computer : virtual public Device {
+// Student virtually inherits Person
+class Student : virtual public Person {
+protected:
+    int rollNo;
+    string course;
+
 public:
-    void compute() {
-        cout << "Computer is computing." << endl;
+    void setStudent(int r, string c) {
+        rollNo = r;
+        course = c;
+    }
+
+    void displayStudent() {
+        cout << "Roll Number: " << rollNo << endl;
+        cout << "Course: " << course << endl;
     }
 };
 
-// Camera virtually inherits Device
-class Camera : virtual public Device {
+// Employee virtually inherits Person
+class Employee : virtual public Person {
+protected:
+    int employeeID;
+
 public:
-    void capture() {
-        cout << "Camera is capturing a photo." << endl;
+    void setEmployee(int id) {
+        employeeID = id;
+    }
+
+    void displayEmployee() {
+        cout << "Employee ID: " << employeeID << endl;
     }
 };
 
-// Smartphone inherits from both
-class Smartphone : public Computer, public Camera {
+// TeachingAssistant inherits from both Student and Employee
+class TeachingAssistant : public Student, public Employee {
 public:
-    void usePhone() {
-        cout << "Smartphone is being used." << endl;
+    void displayDetails() {
+        displayPerson();
+        displayStudent();
+        displayEmployee();
     }
 };
 
 int main() {
 
-    Smartphone s;
+    TeachingAssistant ta;
 
-    s.powerOn();
-    s.compute();
-    s.capture();
-    s.usePhone();
+    ta.setName("Utkarsh");
+    ta.setStudent(112, "Computer Science");
+    ta.setEmployee(501);
+
+    cout << "----- Teaching Assistant Details -----" << endl;
+
+    ta.displayDetails();
 
     return 0;
 }
